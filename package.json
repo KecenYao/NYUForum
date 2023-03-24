@@ -1,0 +1,25 @@
+{
+  "name": "final-project-kecen123",
+  "version": "1.0.0",
+  "description": "## Overview Have you ever wonder what to plan for your college life when you first enter NYU but you find no where to ask? The app **NYU Inclusive Forum** is here to help you out!",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nyu-csci-ua-0467-001-002-spring-2023/final-project-Kecen123.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nyu-csci-ua-0467-001-002-spring-2023/final-project-Kecen123/issues"
+  },
+  "homepage": "https://github.com/nyu-csci-ua-0467-001-002-spring-2023/final-project-Kecen123#readme",
+  "dependencies": {
+    "express": "^4.18.2",
+    "hbs": "^4.2.0",
+    "mongoose": "^7.0.3",
+    "nodemon": "^2.0.22"
+  }
+}

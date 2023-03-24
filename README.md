@@ -95,9 +95,12 @@ An Example Comment:
 
 ## Research Topics
 * (5 points) Integrate user authentication
-I'm going to be using moduels like argon2, passport to achive user authentication
+    * I'm going to be using passport and argon2 to achive user authentication.
+    * My forum will have a login page where users can login with their username and password. If the user is not registered, they can register a new account.
 
 * (5 points) Automated functional testing for all of my routes using Selenium
+    * this will be used to test the functionality of my app
+    * I will be using Selenium to test the functionality of my app. I will be testing the login, register, create post, edit post, delete post, like/dislike post, comment on post, search post, etc.
 
 
 ## [Link to Initial Main Project File](app.mjs) 
