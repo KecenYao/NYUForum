@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<head>
+		<title></title>
+		<link href="https://fonts.googleapis.com/css?family=Fira+Sans+Extra+Condensed" rel="stylesheet">
+
+		<link rel="stylesheet" href="/stylesheets/style.css" type="text/css" media="screen" title="no title" charset="utf-8">
+</head>
+<body>
+<link rel="stylesheet" href="/stylesheets/style.css" type="text/css">
+
+<div id="container">
+	<header>
+			<h1><span>NYU</span> Inclusive Forum</h1>
+			<h3>By Kecen(Kevin) Yao</h3>
+	</header>
+	<nav>
+		{{#if user}}
+		<ul>
+			<li>Logged in as: {{user.username}} </li>
+			<li><form method="POST" action="/logout" id="logout-form"> <button>logout</button></form></li>
+			<br>
+			<br>
+			<li><a href="/">All Posts</a></li>
+			<br>
+			<li><a href="/post/mine">My Posts</a></li>
+			<br>
+
+			<li><a href="/post/add">Create New Post</a></li>
+		</ul>
+
+		{{else}}
+		<ul>
+			<li><a href="/register">Register</a> </li>
+			<li><a href="/login">Login</a></li>
+			<br>
+			<li><a href="/">All Posts</a></li>
+		</ul>
+		{{/if}}
+
+	</nav>
+	<div id="content">
+		{{{ body }}}
+	</div>
+</div>
+</body>
+</html>

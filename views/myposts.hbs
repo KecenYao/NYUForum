@@ -1,0 +1,16 @@
+<ul class="SearchBar">
+<form method="GET" action="">
+    Title:
+<input type="search" name="year">
+    Author:
+<input type="search" name="professor">
+<input type="submit" value = "Search">
+</form>
+</ul>
+
+<ol>
+{{#each posts as |p|}}
+<li><a href={{url}}>{{title}}</a> - [<a href="/post/{{slug}}">details</a>]</li>
+{{/each}}
+</ol>
+

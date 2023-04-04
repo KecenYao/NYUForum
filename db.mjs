@@ -1,4 +1,5 @@
 import mongoose from 'mongoose';
+import slug from 'mongoose-slug-updater';
 
 
 const mongooseOpts = {
@@ -7,26 +8,18 @@ const mongooseOpts = {
 };
 
 
-mongoose.connect('mongodb://localhost/dbName', mongooseOpts).then(
+mongoose.connect('mongodb://localhost/NYU_Forum', mongooseOpts).then(
   () => {console.log('connected to database');
 }).catch(
   err => {console.log(err);}
 );
-const User = new mongoose.Schema({
-  
-    username: {type: String, unique: true},
-    netID: {type: String, unique: true, length: 6},
-    passwords : {type: String, length: 8},
-    posts: [Post],
-});
 
-const Post = new mongoose.Schema({
-  user: {type: mongoose.Schema.Types.ObjectId, ref: 'User'},
-  title: String,
-  body: String,
-  likes: Number,
-  comments: [comments],
-  date: {type: Date, default: Date.now},
+mongoose.plugin(slug);
+
+const User = new mongoose.Schema({
+  username: {type: String, required: true},
+  netID: {type: String,required: true, unique: true, length: 6},
+  password : {type: String, required: true, minlength: 8},
 });
 
 const Comment = new mongoose.Schema({
@@ -34,6 +27,16 @@ const Comment = new mongoose.Schema({
   body: String,
   date: Date,
 });
+
+const Post = new mongoose.Schema({
+  title: {type: String, required: true},
+  body: {type: String, required: true},
+  user: {type: mongoose.Schema.Types.ObjectId, ref: 'User'},
+  likes: [User],
+  comments: [Comment],
+  slug: {type: String, slug: 'title', unique: true},
+  date: {type: Date, default: Date.now},
+}, {timestamps: true});
 
 mongoose.model('User', User);
 mongoose.model('Post', Post);

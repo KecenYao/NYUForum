@@ -1,0 +1,22 @@
+<h2 class = "insideHead">Register</h2>
+{{#if message}}
+<div class="error">{{ message }}</div>
+{{/if}}
+<form class = "adder" method="POST" action="register">
+	<div>
+		<label for="username">Username:</label>
+		<input type="text" name="username" value="">
+	</div>
+	<br>
+	<div>
+		<label for="NetID">NetID:</label> 
+		<input type="netID" name="netID" value="">
+	</div>
+	<br>
+	<div>
+		<label for="password">Password:</label>
+		<input type="password" name="password" value="">
+	</div>
+	<br>
+	<div><input type="submit" value="Register"></div>
+</form>
