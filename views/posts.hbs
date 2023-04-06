@@ -1,16 +1,33 @@
 <ul class="SearchBar">
 <form method="GET" action="">
     Title:
-<input type="search" name="year">
+<input type="search" name="title">
     Author:
-<input type="search" name="professor">
+<input type="search" name="user">
+    Topic:
+<select name="topic">
+    <option value="All">All</option>
+    <option value="Academic">Academic</option>
+    <option value="Extracurricular">Extracurricular</option>
+    <option value="Other">Other</option>
+</select>
 <input type="submit" value = "Search">
 </form>
 </ul>
 
 <ol>
 {{#each posts as |p|}}
-<li id = "post_title"><a href="/post/{{slug}}">{{title}}</a></li>
+<li id = "post_title">
+    <div id = "post_title_child">
+    <a href="/post/{{slug}}">{{title}}</a>
+    </div>
+    <div id = "post_title_child">
+    Topic: {{topic}}
+    </div>
+    <div id = "post_title_child">
+    By: {{user.username}}
+    </div>
+</li>
 <div id = "post_body">{{body}}</div>
 {{/each}}
 </ol>

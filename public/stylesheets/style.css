@@ -36,7 +36,7 @@ header h3 {
 }
 nav {
 	background-color: #ab82c5;
-	height: 83%;
+	height: 100%;
 	width: 15%;
 	position: fixed;
 	left: 0px;
@@ -108,15 +108,20 @@ nav ul li a:hover {
 }
 
 #post_title {
+	color: #8e44bf62;
+	font-family: 'Monaco', Monospace;
+	font-size: 20px;
+}
+#post_title_child {
+	display: inline-block;
 	background-color: #8e44bf62;
 	color: #eee6f3;
 	font-family: 'Monaco', Monospace;
 	font-size: 20px;
-	padding: 10px;
-	margin-left: 5%;
-	margin-right: 5%;
 	border-radius: 10px;
+	padding: 1rem 1rem;
 }
+
 #post_title a {
 	color: #eee6f3;
 	text-decoration: none;
@@ -134,3 +139,18 @@ nav ul li a:hover {
 	margin-right: 5%;
 	border-radius: 10px;
 }
+
+.error {
+	background-color: #8a2be2;
+	color: #fff;
+	padding: 20px;
+	border-radius: 10px;
+	font-size: 16px;
+	font-weight: bold;
+	text-align: center;
+	margin-left: 30%;
+	margin-right:30%;
+	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.849);
+  }
+
+
