@@ -12,7 +12,9 @@ header {
 	width: 100%;
 	height: 140px;
 	background-color: #702b9d;
+	z-index: 1;
 	/* text-align: center; */
+	opacity: 1;
 	position: fixed;
 	top: 0px;
 	left: 0px;
@@ -21,7 +23,7 @@ header h1 {
 	text-align: center;
 	font-family: 'Monaco', Monospace;
 	font-size: 50px;
-	color: #eee6f3;
+	color: #ffffff;
 }
 header h1 span {
 	color: #330662;
@@ -153,4 +155,84 @@ nav ul li a:hover {
 	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.849);
   }
 
+#detail_title {
+	color: #8e44bf62;
+	font-family: 'Monaco', Monospace;
+	font-size: 40px;
+	text-align: center;
+}
 
+#detail_info{
+	color: #8d799a;
+	font-family: 'Monaco', Monospace;
+	font-size: 10px;
+	display: inline-block;
+	background-color: #8e44bf62;
+	border-radius: 10px;
+	padding: 1rem 1rem;
+}
+
+#detail_body{
+	color: #8d799a;
+	font-family: 'Monaco', Monospace;
+	font-size: 20px;
+	min-height: 200px;
+	padding: 20px;
+	margin-top: 20px;
+	margin-right: 20px;
+	background-color: #8e44bf33;
+	border-radius: 10px;
+}
+
+#comment_title{
+	color: #8d799a;
+	font-family: 'Monaco', Monospace;
+	font-size: 20px;
+	display: inline-block;
+	background-color: #8e44bf62;
+	border-radius: 10px;
+	padding: 1rem;
+}
+
+#comment_info{
+	color: #8d799a;
+	font-family: 'Monaco', Monospace;
+	font-size: 5px;
+	float: right;
+	background-color: #8e44bf62;
+	border-radius: 10px;
+	padding: 1rem 1rem;
+}
+#comment_body{
+	color: #8d799a;
+	font-family: 'Monaco', Monospace;
+	font-size: 20px;
+	padding: 10px;
+	margin-right: 20px;
+}
+#new_comment{
+	color: #8d799a;
+	font-family: 'Monaco', Monospace;
+	font-size: 20px;
+	padding: 10px;
+	margin-right: 20px;
+	background-color: #8e44bf33;
+	border-radius: 10px;
+}
+#edit_delete{
+	position: absolute;
+	top: 0;
+	right: 50px;
+	font-family: 'Monaco', Monospace;
+	font-size: 15px;
+	background-color: #8e44bf62;
+	border-radius: 10px;
+	padding: 1rem 1rem;
+}
+#edit_delete a {
+	color: #eee6f3;
+	text-decoration: none;
+}
+#edit_delete a:hover {
+	color: #b12cb3;
+}

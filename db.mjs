@@ -41,10 +41,9 @@ const User = new mongoose.Schema({
 });
 
 const Comment = new mongoose.Schema({
-  user: {type: mongoose.Schema.Types.ObjectId, ref: 'User'},
+  user: {type: String, required: true},
   body: String,
-  date: Date,
-});
+}, {timestamps: true});
 
 const Post = new mongoose.Schema({
   title: {type: String, required: true},
@@ -54,7 +53,6 @@ const Post = new mongoose.Schema({
   comments: [Comment],
   topic: {type: String, required: true},
   slug: {type: String, slug: 'title', unique: true},
-  date: {type: Date, default: Date.now},
 }, {timestamps: true});
 
 

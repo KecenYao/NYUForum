@@ -91,23 +91,26 @@ router.get('/post/add', (req, res) => {
   });
 
 router.post('/post/add', async (req, res) => {
-    console.log(req.body);
     const title = sanitize(req.body.title);
     const body = sanitize(req.body.body);
     const user = req.session.user._id;
     const topic = sanitize(req.body.topic);
-    const post = new Post({
-    title: title,
-    body: body,
-    user: user,
-    topic: topic,
-    comments: [],
-    likes: []
-    });
-    console.log(post);
-    post.save().then(() => {
-    res.redirect('/');
-    });
+    if (title === '' || body === '') {
+        res.render('add', {message: "Can not be blank! Try again!"});
+    }
+    else{
+      const post = new Post({
+      title: title,
+      body: body,
+      user: user,
+      topic: topic,
+      comments: [],
+      likes: []
+      });
+      post.save().then(() => {
+      res.redirect('/');
+      });
+    }
 });
 
 // view my post route
@@ -130,8 +133,62 @@ router.get('/post/:slug', async (req, res) => {
     const postSlug = req.params.slug;
     const TargetPost = await Post.findOne({slug: postSlug}).populate('user').exec();
     console.log(TargetPost);
-    res.render('post-slug', {post: TargetPost});
+    if (TargetPost.user._id == req.session.user._id) {
+      res.render('my-post-slug', {post: TargetPost});
     }
-    });
+    else{
+      res.render('post-slug', {post: TargetPost});
+    }}});
+
+// comment route
+router.post('/post/:slug/comment', async (req, res) => {
+    const postSlug = req.params.slug;
+    const body = sanitize(req.body.body);
+    if (!body) {
+      res.redirect('/post/' + postSlug);
+    }
+    else{
+      const user = req.session.user.username;
+      const comment = new Comment({
+      body: body,
+      user: user,
+      });
+      const TargetPost = await Post.findOne({slug: postSlug}).exec();
+      TargetPost.comments.push(comment);
+      TargetPost.save().then(() => {
+      res.redirect('/post/' + postSlug);
+      });
+    }
+});
+
+// delete post route
+router.get('/post/:slug/delete', async (req, res) => {
+    const postSlug = req.params.slug;
+    await Post.findOneAndDelete({slug: postSlug}).exec();
+    res.redirect('/');
+});
+
+//edit post route
+router.get('/post/:slug/edit', async (req, res) => {
+    const postSlug = req.params.slug;
+    const TargetPost = await Post.findOne({slug: postSlug}).exec();
+    res.render('edit', {title: TargetPost.title, body: TargetPost.body, topic: TargetPost.topic});
+});
+
+router.post('/post/:slug/edit', async (req, res) => {
+    const postSlug = req.params.slug;
+    const title = sanitize(req.body.title);
+    const body = sanitize(req.body.body);
+    const topic = sanitize(req.body.topic);
+    if (title === '' || body === '') {
+      res.render('edit', {title: title,body : body, topic: topic ,message: "Can not be blank! Try again!"});
+    }
+    else{
+      const new_post = await Post.findOneAndUpdate({slug: postSlug},{title:title,body:body,topic:topic},{new: true}).exec();
+      const new_slug = new_post.slug;
+      res.redirect('/post/' + new_slug);
+    }
+});
+
 
 export{router as default}

@@ -1,5 +1,5 @@
 <div>
-    <div class="HeadContainer"><h2 class="insideHead">Create a new Post</h2></div>
+    <div class="HeadContainer"><h2 class="insideHead">Edit Post</h2></div>
 {{#if message}}
 <div class="error">{{ message }}</div>
 <br>
@@ -9,11 +9,11 @@
 <form method="POST" action="">
 <li>
     Title:
-<input type="search" name="title">
+<input type="search" name="title" value={{title}}>
 </li>   
 <br>
 <li>Topic:
-<select name="topic" id="topic">
+<select name="topic" id="topic" value = {{topic}}>
     <optgroup label = "topic">
     <option value="Academic">Academic</option>
       <option value="Extracurricular">Extracurricular</option>
@@ -21,9 +21,9 @@
     </optgroup>
   </select></li>
 <br>
-<li>Body: <textarea id="textfield" name = "body" style="height:150px; width: 200px;"></textarea><br></li>
+<li>Body: <textarea id="textfield" name = "body" style="height:150px; width: 200px;">{{body}}</textarea><br></li>
 
-<input type="submit" value = "Create">
+<input type="submit" value = "Edit">
 </div>
 
 </form>
