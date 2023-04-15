@@ -90,7 +90,7 @@ This is the page that show's the post that is not from the logged in user.
 
 ## Site map
 
-![post](documentation/sitemap.jpg)
+![post](documentation/sitmap.png)
 
 ## User Stories or Use Cases
 1. as non-registered user, I can register a new account with the site
@@ -100,6 +100,7 @@ This is the page that show's the post that is not from the logged in user.
 3. as a user, I can view all posts
 4. as a user, I can view my posts
 5. as a user, I can search a post
+5. as a user, I can click in a post to see the post
 6. as a user, I can create a new post
 7. as a user, I can edit my post
 8. as a user, I can delete my post
@@ -107,12 +108,12 @@ This is the page that show's the post that is not from the logged in user.
 
 ## Research Topics
 * (5 points) Integrate user authentication
-    * I'm going to be using passport and argon2 to achive user authentication.
+    * I'm going to be using passport to achive user authentication.
     * My forum will have a login page where users can login with their username and password. If the user is not registered, they can register a new account.
 
 * (5 points) Automated functional testing for all of my routes using Selenium
     * this will be used to test the functionality of my app
-    * I will be using Selenium to test the functionality of my app. I will be testing the login, register, create post, edit post, delete post, like/dislike post, comment on post, search post, etc.
+    * I will be using Selenium to test the functionality of my app. I will be testing the login, register, create post, edit post, delete post, comment on post, search post, etc.
 
 
 ## [Link to Main Project File](app.mjs) 

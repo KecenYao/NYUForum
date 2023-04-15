@@ -15,21 +15,48 @@ router.get('/', async (req, res) => {
     if (req.query === undefined) {
       filter = {};
     }
-    if (req.query.topic) {
-      if (req.query.topic !== 'All') {
-        filter.topic = req.query.topic;
-      }
-    }
-    if (req.query.title) {
-      filter.title = req.query.title;
-    }
+    // if (req.query.topic) {
+    //   if (req.query.topic !== 'All') {
+    //     filter.topic = req.query.topic;
+    //   }
+    // }
+    // if (req.query.title) {
+    //   filter.title = req.query.title;
+    // }
     if (req.query.user) {
       const userfilter = {username: req.query.user}
       const user = await User.findOne(userfilter).exec();
       filter.user = user._id;
     }
-    const posts = await Post.find(filter).sort('-createdAt').populate('user').exec();
-    res.render('posts', {user: req.session.user, home: true, posts: posts});
+    // const posts = await Post.find(filter).sort('-createdAt').populate('user').exec();
+    const posts = await Post.find(filter)
+      .sort('-createdAt')
+      .populate('user') 
+      .exec();
+    const filteredPosts = posts
+      .map(post => ({ // only include relevant post fields
+        id: post._id,
+        title: post.title,
+        topic: post.topic,
+        user: post.user,
+        createdAt: post.createdAt,
+        updatedAt: post.updatedAt,
+        slug: post.slug,
+        body: post.body,
+      }))
+      .filter(post => { // filter out posts that don't match search query
+        if (req.query.title) {
+          return post.title.toLowerCase() === req.query.title.toLowerCase();
+        }
+        return true;
+      })
+      .filter(post => { // filter out posts that don't match search query
+        if (req.query.topic && req.query.topic !== 'All') {
+          return post.topic === req.query.topic;
+        }
+        return true;
+      });
+    res.render('posts', {user: req.session.user, home: true, posts: filteredPosts});
 });
 
 // register route
@@ -105,7 +132,6 @@ router.post('/post/add', async (req, res) => {
       user: user,
       topic: topic,
       comments: [],
-      likes: []
       });
       post.save().then(() => {
       res.redirect('/');
