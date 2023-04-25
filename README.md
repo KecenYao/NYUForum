@@ -119,4 +119,8 @@ This is the page that show's the post that is not from the logged in user.
 ## [Link to Main Project File](app.mjs) 
 
 ## Annotations / References Used
-1. loginradius https://www.loginradius.com/blog/engineering/guest-post/nodejs-authentication-guide/
+1. loginradius 
+https://www.loginradius.com/blog/engineering/guest-post/nodejs-authentication-guide/
+2. passport     
+https://www.youtube.com/watch?v=6FOq4cUdH8k
+3. Selenium https://www.selenium.dev/documentation/webdriver/getting_started/
