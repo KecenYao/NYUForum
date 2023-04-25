@@ -111,9 +111,9 @@ This is the page that show's the post that is not from the logged in user.
     * I'm going to be using passport to achive user authentication.
     * My forum will have a login page where users can login with their username and password. If the user is not registered, they can register a new account.
 
-* (5 points) Automated functional testing for all of my routes using Selenium
+* (5 points) Automated functional testing for all of my routes using Selenium/headless chrome
     * this will be used to test the functionality of my app
-    * I will be using Selenium to test the functionality of my app. I will be testing the login, register, create post, edit post, delete post, comment on post, search post, etc.
+    * I will be using Selenium to test the functionality of my app. I will be testing the login/logout function using 4 test.
 
 
 ## [Link to Main Project File](app.mjs) 
